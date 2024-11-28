@@ -1,0 +1,43 @@
+# Node.js dependencies
+node_modules/
+
+# Environment files
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Coverage reports
+coverage/
+
+# Temporary files
+tmp/
+temp/
+
+# Build output
+dist/
+build/
+
+# Cloudinary temp files (if any)
+.cloudinary/
+
+# Others
+*.pid
+*.seed
+*.pid.lock
