@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    font-family: Outfit;
+}
+
+.placeholder-color{
+    color: #e0e0e0;
+    font-weight: 300;
+}
+
+.hover-p:hover{
+    color: white;
+    background-color: black;
+    transition: all ease-in-out 300ms;
+}
+
+.hover-a:hover{
+    color: black;
+    background-color: white;
+    transition: all ease-in-out 300ms;
+}
