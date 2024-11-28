@@ -47,10 +47,12 @@ const loginUser = async (req, res) => {
 
       res.json({ success: true, token, user: { name: user.name } });
     } else {
-      return res({ success: false, message: "invalid credentials" });
+      return res.json({ success: false, message: "invalid credentials" });
     }
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: error.message });
   }
 };
+
+export {registerUser, loginUser}
