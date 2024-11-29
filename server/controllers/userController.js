@@ -67,8 +67,8 @@ const userCredits = async (req, res) => {
     });
   } catch (error) {
     console.log(error.message);
-    res.json({success:true, message: error.message})
+    res.json({ success: true, message: error.message });
   }
 };
 
-export { registerUser, loginUser };
+export { registerUser, loginUser, userCredits };
