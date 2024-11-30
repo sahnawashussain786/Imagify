@@ -1,7 +1,8 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { assets } from "../assets/assets";
 import { motion } from "motion/react";
+import { AppContext } from "../context/AppContext";
 
 const Result = () => {
   const [image, setImage] = useState(assets.sample_img_1);
@@ -9,7 +10,23 @@ const Result = () => {
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState("");
 
-  const onSubmitHandler = async (e) => {};
+  const { generateImage } = useContext(AppContext);
+
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    if (input) {
+      const image = await generateImage(input);
+      console.log(image); // Check what image URL is returned
+      if (image) {
+        setIsImageLoaded(true);
+        setImage(image);
+      } else {
+        console.error("No image returned from generateImage");
+      }
+    }
+    setLoading(false);
+  };
 
   return (
     <motion.form
@@ -22,7 +39,7 @@ const Result = () => {
     >
       <div>
         <div className="relative">
-          <img src={assets.sample_img_1} className="max-w-sm rounded" alt="" />
+          <img src={image} className="max-w-sm rounded" alt="" />
           <span
             className={`absolute bottom-0 left-0 h-1 bg-blue-500 ${
               loading ? "w-full transition-all duration-[10s]" : "w-0"
@@ -51,7 +68,9 @@ const Result = () => {
       {isImageLoaded && (
         <div className="flex gap-2 flex-wrap justify-center text-white text-sm p-0.5 mt-10 rounded-full">
           <p
-            onClick={() => setIsImageLoaded(false)}
+            onClick={() => {
+              setIsImageLoaded(false), setImage(assets.sample_img_1);
+            }}
             className="bg-transparent border border-zinc-900 text-black px-8 py-3 rounded-full cursor-pointer"
           >
             Generate Another
