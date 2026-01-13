@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import React, { useContext } from "react";
 import { assets } from "../assets/assets";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,44 +9,58 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex items-center justify-between py-4">
+    <div className="flex items-center justify-between py-4 sticky top-0 z-50 bg-white/30 backdrop-blur-md border-b border-white/20 transition-all duration-300">
       <Link to="/">
-        <img src={assets.logo} className="w-28 sm:w-32 lg:w-40" alt="" />
+        <img
+          src={assets.logo}
+          className="w-28 sm:w-32 lg:w-40 hover:scale-105 transition-transform duration-300"
+          alt="Imagify Logo"
+        />
       </Link>
       <div>
         {user ? (
           <div className="flex items-center gap-2 sm:gap-3">
             <button
               onClick={() => navigate("/buy")}
-              className="flex items-center gap-2 bg-blue-100 px-4 sm:px-6 py-1.5 sm:py-3 rounded-full hover:scale-105 transition-all duration-700"
+              className="flex items-center gap-2 bg-blue-100/50 hover:bg-blue-100 px-4 sm:px-6 py-1.5 sm:py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-sm border border-blue-200"
             >
               <img className="w-5" src={assets.credit_star} alt="" />
               <p className="text-xs sm:text-sm font-medium text-gray-600">
                 Credits left : {credit}
               </p>
             </button>
-            <p className="text-gray-600 max-sm:hidden pl-4">Hi, {user .name}</p>
+            <p className="text-gray-600 max-sm:hidden pl-4 font-medium">
+              Hi, {user.name}
+            </p>
             <div className="relative group">
               <img
                 src={assets.profile_icon}
-                className="w-10 drop-shadow"
-                alt=""
+                className="w-10 drop-shadow hover:scale-110 transition-transform duration-300 cursor-pointer"
+                alt="Profile"
               />
-              <div className="absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-12 ">
-                <ul className="list-none m-0 p-2 bg-white rounded-md border text-sm">
-                  <li onClick={logout} className="py-1 px-2 cursor-pointer pr-10">Logout</li>
+              <div className="absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-12">
+                <ul className="list-none m-0 p-2 bg-white/90 backdrop-blur-md rounded-md border border-gray-100 shadow-lg text-sm min-w-[120px]">
+                  <li
+                    onClick={logout}
+                    className="py-2 px-4 cursor-pointer hover:bg-gray-100 rounded-md transition-colors"
+                  >
+                    Logout
+                  </li>
                 </ul>
               </div>
             </div>
           </div>
         ) : (
           <div className="flex items-center gap-2 sm:gap-5">
-            <p onClick={() => navigate("/buy")} className="cursor-pointer">
+            <p
+              onClick={() => navigate("/buy")}
+              className="cursor-pointer text-gray-700 hover:text-black hover:underline transition-all duration-300 font-medium"
+            >
               Pricing
             </p>
             <button
               onClick={() => setShowLogin(true)}
-              className="bg-zinc-800 text-white px-7 py-2 sm:px-10 text-sm rounded-full"
+              className="bg-black text-white px-7 py-2 sm:px-10 text-sm rounded-full hover:bg-gray-800 hover:scale-105 transition-all duration-300 shadow-lg"
             >
               Login
             </button>

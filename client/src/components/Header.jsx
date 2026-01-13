@@ -6,17 +6,16 @@ import { AppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-
-  const {user,setShowLogin} = useContext(AppContext);
+  const { user, setShowLogin } = useContext(AppContext);
   const navigate = useNavigate();
 
   const onClickHandler = () => {
     if (user) {
-      navigate('/result')
+      navigate("/result");
     } else {
-      setShowLogin(true)
+      setShowLogin(true);
     }
-  }
+  };
 
   return (
     <motion.div
@@ -81,7 +80,7 @@ const Header = () => {
           .map((item, index) => (
             <motion.img
               whileHover={{ scale: 1.05, duration: 0.1 }}
-              className="rounded hover:scale-105 transition-all duration-300 cursor-pointer max-sm:w-10"
+              className="rounded hover:scale-105 transition-all duration-300 cursor-pointer max-sm:w-14"
               src={index % 2 === 0 ? assets.sample_img_2 : assets.sample_img_1}
               alt=""
               key={index}
